@@ -219,7 +219,7 @@ function results() {
   quit.classList.remove("hidden");
   totalQuestions.classList.add("hidden");
   let str = score < 5 ? "Oops better luck next time!😤" : "Nice!😎";
-  if (score == questions.length) str = "Excellent! You're a true fan🎉!";
+  if (score == questions.length) str = "Excellent! You're a true fan!🎉";
   let resultText = `<p>End of Quiz</p>
   <p><p>${str}<p/> You got ${score} out of ${questions.length} questions correct!</p>`;
   scores.innerHTML = resultText;
