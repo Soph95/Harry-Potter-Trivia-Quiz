@@ -1,0 +1,87 @@
+body {
+  font-family: "Raleway", sans-serif;
+}
+
+.card {
+  text-align: center;
+  width: 700px;
+  height: 600px;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.start-btn {
+  font-size: 1.5rem;
+  margin-top: 30px;
+  width: 400px;
+  height: 50px;
+  position: absolute;
+  left: 500px;
+  background-color: grey;
+  border: none;
+  border-radius: 5px;
+}
+
+.start-btn:hover {
+  background-color: lightgray;
+}
+
+.heading {
+  text-align: center;
+  font-size: 4rem;
+  font-family: "Roboto", sans-serif;
+}
+
+.option-btns {
+  width: 400px;
+  height: 50px;
+  margin: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.options-list .option-btns.correct {
+  background-color: green;
+  margin: 25px;
+  border: none;
+}
+
+.options-list .option-btns.incorrect {
+  background-color: red;
+  margin: 25px;
+  border: none;
+}
+
+.next {
+  height: 40px;
+  width: 120px;
+  position: absolute;
+  bottom: 30px;
+  right: 80px;
+}
+
+.option-btns {
+  background-color: grey;
+  margin: 25px;
+  border: none;
+  outline: none;
+}
+
+/* .option-btns:hover {
+  background-color: lightgray;
+} */
+
+.options-list {
+  margin-top: 40px;
+}
+
+.quiz {
+  margin-top: 30px;
+  text-align: center;
+}
