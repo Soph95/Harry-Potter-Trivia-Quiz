@@ -8,8 +8,11 @@ const quit = document.querySelector(".quit");
 const next = document.querySelector(".next");
 const totalQuestions = document.querySelector(".totalQuestions");
 const timerSpace = document.querySelector(".timer");
-
-let score = 0;
+const timeBar = document.querySelector(".time-bar");
+const quiz = document.querySelector(".quiz");
+const scores = document.querySelector(".results");
+const replay = document.querySelector(".replay");
+const optionBtns = optionsList.querySelectorAll(".option-btns");
 
 const questions = [
   {
@@ -34,17 +37,21 @@ const questions = [
   },
 ];
 
+let score = 0;
 let inPlay = true;
 let timeCount;
 let questionCounter = 0;
+let timeSecs = 10;
+let widthValue = 0;
+let barLine;
 
 //Start quiz
 start.addEventListener("click", function () {
   startingPage.classList.add("hidden");
-  next.classList.remove("hidden");
-  timerSpace.classList.remove("hidden");
+  quiz.classList.remove("hidden");
   showQuestions(questionCounter);
-  Starttimer(10);
+  startTimer(10);
+  TimeBarLine(0);
 });
 
 //When next button is clicked
@@ -52,8 +59,38 @@ next.addEventListener("click", function (event) {
   if (questionCounter < questions.length - 1) {
     questionCounter++;
     showQuestions(questionCounter);
-  } // was a 0
+    inPlay = true;
+    clearInterval(timeCount);
+    startTimer(timeSecs);
+    clearInterval(barLine);
+    TimeBarLine(widthValue);
+    next.classList.add("hidden");
+  } else {
+    results();
+  }
+});
+
+//When replay button is clicked
+replay.addEventListener("click", function () {
+  scores.classList.add("hidden");
+  replay.classList.add("hidden");
+  quiz.classList.remove("hidden");
+  quit.classList.add("hidden");
+  questionCounter = 0;
+  score = 0;
   inPlay = true;
+  timeSecs = 10;
+  widthValue = 0;
+  showQuestions(questionCounter);
+  clearInterval(timeCount);
+  startTimer(timeSecs);
+  clearInterval(barLine);
+  TimeBarLine(widthValue);
+});
+
+//When quit button is clicked
+quit.addEventListener("click", function () {
+  window.location.reload();
 });
 
 //Show questions and options
@@ -79,11 +116,15 @@ function showQuestions(num) {
 
 //Check user options
 function checkAnswer(event) {
+  clearInterval(timeCount);
+  clearInterval(barLine);
   let element = event.target;
   let correctAnswer = questions[questionCounter].answer;
   if (inPlay) {
-    if (element.textContent == correctAnswer) element.classList.add("correct");
-    else {
+    if (element.textContent == correctAnswer) {
+      element.classList.add("correct");
+      score++;
+    } else {
       element.classList.add("incorrect");
       const optionBtns = optionsList.querySelectorAll(".option-btns");
       for (let i = 0; i < optionBtns.length; i++) {
@@ -94,13 +135,56 @@ function checkAnswer(event) {
     }
     inPlay = false;
   }
+  next.classList.remove("hidden");
 }
 
-function Starttimer(time) {
+//Timer
+function startTimer(time) {
   timeCount = setInterval(timer, 1000);
   function timer() {
-    timerSpace.textContent = time;
+    let timerText = `<div>Time remaining: ${time}</div>`;
+    timerSpace.innerHTML = timerText;
     time--;
+    if (time < 0) {
+      clearInterval(timeCount);
+      timerSpace.innerHTML = "You ran out of time :(";
+
+      let correctAnswer = questions[questionCounter].answer;
+      const optionBtns = optionsList.querySelectorAll(".option-btns");
+
+      for (let i = 0; i < optionBtns.length; i++) {
+        if (optionBtns[i].textContent == correctAnswer) {
+          optionBtns[i].classList.add("correct");
+        }
+      }
+      inPlay = false;
+      next.classList.remove("hidden");
+    }
   }
 }
-//Continue button
+
+//Timebar
+function TimeBarLine(time) {
+  barLine = setInterval(timer, 29);
+  function timer() {
+    time++;
+    timeBar.style.width = `${time}px`;
+    if (time > 375) {
+      clearInterval(barLine);
+    }
+  }
+}
+
+//Get user results
+function results() {
+  quiz.classList.add("hidden");
+  scores.classList.remove("hidden");
+  next.classList.add("hidden");
+  replay.classList.remove("hidden");
+  quit.classList.remove("hidden");
+  let str = score < 2 ? "Oops better luck next time!" : "Nice!";
+  let resultText = `<p>End of Quiz</p>
+  <p><p>${str}<p/> You got ${score} questions out of ${questions.length} correct</p>
+  <p>End of Quiz</p>`;
+  scores.innerHTML = resultText;
+}
