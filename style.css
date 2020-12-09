@@ -1,5 +1,6 @@
 body {
-  font-family: "Raleway", sans-serif;
+  font-family: "Roboto", sans-serif;
+  background-color: #8db596;
 }
 
 .card {
@@ -11,25 +12,29 @@ body {
 }
 
 .start-btn {
-  font-size: 1.5rem;
+  font-family: "Texturina", serif;
+  background-color: #cfd3ce;
+  color: #000;
+  font-size: 1.7rem;
+  font-weight: 600;
   margin-top: 30px;
-  width: 400px;
+  width: 300px;
   height: 50px;
   position: absolute;
-  left: 500px;
-  background-color: grey;
+  left: 550px;
+  top: 490px;
   border: none;
   border-radius: 5px;
 }
 
 .start-btn:hover {
-  background-color: lightgray;
+  background-color: darkgrey;
 }
 
 .heading {
   text-align: center;
   font-size: 4rem;
-  font-family: "Roboto", sans-serif;
+  font-family: "Texturina", serif;
 }
 
 .option-btns {
@@ -38,7 +43,9 @@ body {
   margin: 25px;
   border: none;
   outline: none;
-  background-color: grey;
+  background-color: #aaaaaa;
+  font-size: 1.1rem;
+  border-radius: 5px;
 }
 
 .hidden {
@@ -62,24 +69,28 @@ body {
 }
 
 .next {
+  background-color: #aaaaaa;
+  font-size: 1rem;
+  outline: none;
+  border: none;
+  border-radius: 5px;
   height: 40px;
   width: 120px;
   position: absolute;
-  bottom: 30px;
-  right: 80px;
+  bottom: 60px;
+  right: 280px;
+}
+
+.next:hover {
+  background-color: #cfd3ce;
 }
 
 .option-btns:hover {
-  background-color: lightgray;
+  background-color: #cfd3ce;
 }
 
 .options-list {
-  margin-top: 40px;
-}
-
-.quiz {
   margin-top: 30px;
-  text-align: center;
 }
 
 .time-bar {
@@ -93,27 +104,64 @@ body {
 }
 
 .quiz {
+  text-align: center;
   position: absolute;
   left: 300px;
   margin: auto;
   border: 2px solid #000;
   width: 800px;
+  background-color: #fff;
+  padding-bottom: 20px;
 }
 
 .results {
   border: 2px solid #000;
   text-align: center;
   width: 500px;
-  height: 300px;
+  height: 250px;
   margin: auto;
+  margin-top: 80px;
+  background-color: #fff;
+  padding-top: 10px;
 }
 
 .btns {
-  margin: 10px;
+  margin: auto;
   position: absolute;
-  left: 610px;
+  left: 560px;
   top: 250px;
 }
-.replay {
-  margin-right: 10px;
+
+.btns .replay {
+  margin: 10px;
+  background-color: #aaaaaa;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  width: 100px;
+  height: 30px;
+  font-size: 1rem;
+}
+
+.btns .quit {
+  margin: 10px;
+  background-color: #aaaaaa;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  width: 100px;
+  height: 30px;
+  font-size: 1rem;
+}
+
+img {
+  position: absolute;
+  left: 500px;
+  top: 150px;
+}
+
+.totalQuestions {
+  position: absolute;
+  top: 530px;
+  left: 310px;
 }
