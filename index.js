@@ -12,28 +12,27 @@ const timeBar = document.querySelector(".time-bar");
 const quiz = document.querySelector(".quiz");
 const scores = document.querySelector(".results");
 const replay = document.querySelector(".replay");
-const optionBtns = optionsList.querySelectorAll(".option-btns");
 
 const questions = [
   {
     question: "What house is Harry Potter in?",
-    answer: "Gryfindor",
-    options: ["Ravenclaw", "Hufflepuff", "Gryfindor", "Slytherin"],
+    answer: "Gryffindor",
+    options: ["Ravenclaw", "Hufflepuff", "Gryffindor", "Slytherin"],
   },
   {
-    question: "What is Ron Weasleys middle name?",
-    answer: "Billius",
-    options: ["Scott", "Billius", "Vernon", "George"],
+    question: "What is Ron Weasley's middle name?",
+    answer: "Bilius",
+    options: ["Scott", "Bilius", "Vernon", "George"],
   },
   {
-    question: "What occupation do Hermionie Grangers parents have?",
+    question: "What occupation do Hermionie Granger's parents have?",
     answer: "Dentists",
     options: ["Dentists", "Doctors", "Lawyers", "Chefs"],
   },
   {
-    question: "What is Hagrid's Hypogrith's name?",
-    answer: "Buckbeek",
-    options: ["Fang", "Buckbeek", "Norbert", "Aragog"],
+    question: "What is Hagrid's Hippogriff's name?",
+    answer: "Buckbeak",
+    options: ["Fang", "Buckbeak", "Norbert", "Aragog"],
   },
   {
     question: "Who said this.. 'Excuse me, I have to go vomit'?",
@@ -62,11 +61,11 @@ const questions = [
   },
   {
     question: "What is this spell used for.. 'Episkey'?",
-    answer: "Fixes broken bones",
+    answer: "Fixes minor injuries",
     options: [
       "Makes you invisible",
       "Creates fire",
-      "Fixes broken bones",
+      "Fixes minor injuries",
       "Creates water",
     ],
   },
@@ -111,6 +110,7 @@ replay.addEventListener("click", function () {
   replay.classList.add("hidden");
   quiz.classList.remove("hidden");
   quit.classList.add("hidden");
+  totalQuestions.classList.remove("hidden");
   questionCounter = 0;
   score = 0;
   inPlay = true;
@@ -218,7 +218,7 @@ function results() {
   replay.classList.remove("hidden");
   quit.classList.remove("hidden");
   totalQuestions.classList.add("hidden");
-  let str = score < 5 ? "Oops better luck next time!😤" : "Nice!🎉";
+  let str = score < 5 ? "Oops better luck next time!😤" : "Nice!😎";
   if (score == questions.length) str = "Excellent! You're a true fan🎉!";
   let resultText = `<p>End of Quiz</p>
   <p><p>${str}<p/> You got ${score} questions out of ${questions.length} correct!</p>`;
