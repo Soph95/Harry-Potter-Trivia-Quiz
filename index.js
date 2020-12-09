@@ -35,6 +35,41 @@ const questions = [
     answer: "Buckbeek",
     options: ["Fang", "Buckbeek", "Norbert", "Aragog"],
   },
+  {
+    question: "Who said this.. 'Excuse me, I have to go vomit'?",
+    answer: "Hermionie",
+    options: ["Ron", "Harry", "Neville", "Hermionie"],
+  },
+  {
+    question: "What is the name of Harry's owl?",
+    answer: "Hedwig",
+    options: ["Hedwig", "Dobby", "Padfoot", "Wormtail"],
+  },
+  {
+    question: "How many Weasley children are there?",
+    answer: "6",
+    options: ["8", "7", "6", "5"],
+  },
+  {
+    question: "Who's patronus is a doe?",
+    answer: "Severus Snape",
+    options: ["Severus Snape", "Harry Potter", "Luna Lovegood", "Draco Malfoy"],
+  },
+  {
+    question: "Who does Harry see when he gets lost in Diagon Alley?",
+    answer: "Hagrid",
+    options: ["Ron", "Hermionie", "Dean", "Hagrid"],
+  },
+  {
+    question: "What is this spell used for.. 'Episkey'?",
+    answer: "Fixes broken bones",
+    options: [
+      "Makes you invisible",
+      "Creates fire",
+      "Fixes broken bones",
+      "Creates water",
+    ],
+  },
 ];
 
 let score = 0;
@@ -95,7 +130,7 @@ quit.addEventListener("click", function () {
 
 //Show questions and options
 function showQuestions(num) {
-  let question = `<p>${questionCounter + 1} ${questions[num].question}</p>`;
+  let question = `<p>${questionCounter + 1}. ${questions[num].question}</p>`;
   questionHeading.innerHTML = question;
 
   let options = `<button type="button" class="option-btns">${questions[num].options[0]}</button> <br />
@@ -147,7 +182,7 @@ function startTimer(time) {
     time--;
     if (time < 0) {
       clearInterval(timeCount);
-      timerSpace.innerHTML = "You ran out of time :(";
+      timerSpace.innerHTML = "You ran out of time!";
 
       let correctAnswer = questions[questionCounter].answer;
       const optionBtns = optionsList.querySelectorAll(".option-btns");
@@ -182,9 +217,10 @@ function results() {
   next.classList.add("hidden");
   replay.classList.remove("hidden");
   quit.classList.remove("hidden");
-  let str = score < 2 ? "Oops better luck next time!" : "Nice!";
+  totalQuestions.classList.add("hidden");
+  let str = score < 5 ? "Oops better luck next time!😤" : "Nice!🎉";
+  if (score == questions.length) str = "Excellent! You're a true fan🎉!";
   let resultText = `<p>End of Quiz</p>
-  <p><p>${str}<p/> You got ${score} questions out of ${questions.length} correct</p>
-  <p>End of Quiz</p>`;
+  <p><p>${str}<p/> You got ${score} questions out of ${questions.length} correct!</p>`;
   scores.innerHTML = resultText;
 }
