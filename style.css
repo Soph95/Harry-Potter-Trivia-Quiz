@@ -3,14 +3,6 @@ body {
   background-color: #8db596;
 }
 
-.card {
-  text-align: center;
-  width: 700px;
-  height: 600px;
-  margin: auto;
-  margin-top: 20px;
-}
-
 .start-btn {
   font-family: "Texturina", serif;
   background-color: #cfd3ce;
@@ -50,10 +42,6 @@ body {
 
 .hidden {
   display: none;
-}
-
-.show {
-  display: block;
 }
 
 .options-list .option-btns.correct {
@@ -125,6 +113,11 @@ body {
   padding-top: 10px;
 }
 
+.results p {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
 .btns {
   margin: auto;
   position: absolute;
@@ -164,4 +157,9 @@ img {
   position: absolute;
   top: 530px;
   left: 310px;
+}
+
+.end {
+  font-family: "Texturina", serif;
+  font-size: 2.5rem;
 }
